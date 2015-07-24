@@ -3,3 +3,4 @@
 .idea/.name
 *.dll
 Zint/zint.exe
+*.csv
