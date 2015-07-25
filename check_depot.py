@@ -1,16 +1,16 @@
 # encoding: utf-8
 __author__ = 'Greg'
 
-import csv, re
+import csv, re, os
 
 
 def return_analogs(search_what, search_in):
     s_to_return = ''
-    just_model = ''.join(re.findall('([A-Za-z ]+)', search_what))
+    just_model = ''.join(re.findall('([A-Za-z &]+)', search_what))
     for x, y in enumerate(search_in):
         if just_model in y:
             k = y.split(',')
-            s_to_return += '{} - {} pair(s) for {}\n'.format(k[0], k[1], k[6])
+            s_to_return += '{} - {} pair(s) for {}\n'.format(k[0], k[1], k[6]).replace('.00000000', '')
 
     return s_to_return
 
@@ -47,7 +47,8 @@ except Exception as exc:
 # EAN_number = '8024820003326'
 while True:
     EAN_number = input('Name or Barcode: ')
-
+    os.system('cls')
+    print('RESULTS\t{}:'.format(EAN_number))
     if any(EAN_number in s for s in list_of_arts):
         for gotcha in [s for s in list_of_arts if EAN_number in s]:
             printer(gotcha.split(','))
