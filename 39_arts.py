@@ -49,7 +49,7 @@ png_directory = current_directory + '\\barcode\\'
 try:
     with open(names_txt, 'r', encoding='utf-8') as file_to_code:
         for line in file_to_code:
-            list_from_txt = ['{}'.format(line.rstrip()) for line in file_to_code]
+            list_from_txt = ['\n{}'.format(line.rstrip()) for line in file_to_code]
         file_to_code.close()
 except Exception as exc:
     exception_handler('Is it a non-empty text file?\n{}'.format(exc))

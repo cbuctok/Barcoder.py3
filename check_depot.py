@@ -15,10 +15,15 @@ def return_analogs(search_what, search_in):
     return s_to_return
 
 
+def disco(new_price):
+    old_price = float(new_price[:-4])/0.8
+    return '\tOLD PRICE: {} EUR'.format(old_price)
+
+
 def printer(what_to_print):
-    print('EAN:\t{}\nNAME:\t{}\nPRICE:\t{}\n\nDEPOT:\n{}'.format(what_to_print[1], what_to_print[4],
-                                                                 what_to_print[9],
-                                                                 return_analogs(what_to_print[4], ware)))
+    print('EAN:\t{}\nNAME:\t{}\nPRICE:\t{}{}\n\nDEPOT:\n{}'.format(what_to_print[1], what_to_print[4],
+                                                                    what_to_print[10], disco(what_to_print[10]),
+                                                                    return_analogs(what_to_print[4], ware)))
 
 
 print('\nxXxXx Warehouse Check xXxXx\n')
